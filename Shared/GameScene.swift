@@ -7,7 +7,10 @@
 //
 
 import SpriteKit
-import GameplayKit
+#if os(iOS) || os(tvOS)
+    import GameplayKit
+#endif
+
 import CoreMotion
 
 
@@ -78,62 +81,63 @@ class GameScene: SKScene{
         return scene
     }
     
+    
+    
     func setUpScene() {
         
-        if self.childNode(withName: "player") == nil {
-            torpedoSound = SKAction.playSoundFileNamed("torpedo.mp3", waitForCompletion: false)
-            explosionSound = SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false)
+        
+        DispatchQueue.global(qos: DispatchQoS.QoSClass.default).async {
             
-            labelScore = self.childNode(withName: "scoreLabel") as! SKLabelNode
+            self.torpedoSound = SKAction.playSoundFileNamed("torpedo.mp3", waitForCompletion: false)
+            self.explosionSound = SKAction.playSoundFileNamed("explosion.mp3", waitForCompletion: false)
             
-            
-            starfield = SKEmitterNode(fileNamed: "Starfield")
-            starfield.position = CGPoint(x: self.frame.width/2, y: self.frame.height)
-            starfield.advanceSimulationTime(10)
-            starfield.zPosition = -1
-            
-            self.addChild(starfield)
-            
-            
-            
-            self.physicsWorld.contactDelegate = self
-            
-            player = self.childNode(withName: "player") as! SKSpriteNode
-            player.position = CGPoint(x: self.frame.width / 2, y: player.position.y)
-            
-            
-            
-            gameTimer = Timer.scheduledTimer(timeInterval: 0.75, target: self, selector: #selector(addAlien), userInfo: nil, repeats: true)
-            
-            
-            motionManager.accelerometerUpdateInterval = 0.2
-            
-            motionManager.startAccelerometerUpdates(to: OperationQueue.current!, withHandler: {(data: CMAccelerometerData?, error:Error?) in
-                if let accelerometerData = data {
-                    self.xAcceleration = CGFloat(accelerometerData.acceleration.x) * 0.75 + self.xAcceleration * 0.25
-                }
-                
-            })
-            
-            
-            
-//            player = SKSpriteNode(imageNamed: "shuttle")
-//            player.position = CGPoint(x: 0.0, y: 0.0)
-//            player.name = "player"
-//            
-//            self.addChild(player)
         }
+        
+        labelScore = self.childNode(withName: "scoreLabel") as! SKLabelNode
+        
+        
+        starfield = SKEmitterNode(fileNamed: "Starfield")
+        starfield.position = CGPoint(x: self.frame.width/2, y: self.frame.height)
+        starfield.advanceSimulationTime(10)
+        starfield.zPosition = -1
+        
+        self.addChild(starfield)
+        
+        
+        
+        self.physicsWorld.contactDelegate = self
+        
+        player = self.childNode(withName: "player") as! SKSpriteNode
+        player.position = CGPoint(x: self.frame.width / 2, y: player.position.y)
+        
+        
+        
+        gameTimer = Timer.scheduledTimer(timeInterval: 0.75, target: self, selector: #selector(addAlien), userInfo: nil, repeats: true)
+        
+        
+        motionManager.accelerometerUpdateInterval = 0.2
+        
+        motionManager.startAccelerometerUpdates(to: OperationQueue.current!, withHandler: {(data: CMAccelerometerData?, error:Error?) in
+            if let accelerometerData = data {
+                self.xAcceleration = CGFloat(accelerometerData.acceleration.x) * 0.75 + self.xAcceleration * 0.25
+            }
+            
+        })
+        
+
+        
         
         
         #if os(watchOS)
-                
+            
             let crownSequencer = WKExtension.shared().rootInterfaceController!.crownSequencer
             crownSequencer.delegate = self
             crownSequencer.focus()
-                
+            
         #endif
 
     }
+    
     
     override func didSimulatePhysics() {
         player.position.x += xAcceleration * 50
@@ -150,13 +154,15 @@ class GameScene: SKScene{
   
     
     func addAlien() {
-        possibleAlients = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleAlients) as! [String]
+      //  possibleAlients = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: possibleAlients) as! [String]
         
         let alien = SKSpriteNode(imageNamed: possibleAlients[0])
         
         
-        let randomAlienPosition = GKRandomDistribution(lowestValue: 0, highestValue: Int(self.frame.width) - 30)
-        let position = CGFloat(randomAlienPosition.nextInt())
+ //       let randomAlienPosition = GKRandomDistribution(lowestValue: 0, highestValue: Int(self.frame.width) - 30)
+ //       let position = CGFloat(randomAlienPosition.nextInt())
+        
+        let position: CGFloat = 12.0
         
         alien.position = CGPoint(x: position, y: self.frame.height - alien.size.height)
         
@@ -184,6 +190,7 @@ class GameScene: SKScene{
     
     
     func fireTorpedo() {
+        
         self.run(torpedoSound)
         
         let torpedoNode = SKSpriteNode(imageNamed: "torpedo")
@@ -210,15 +217,10 @@ class GameScene: SKScene{
         
         torpedoNode.run(SKAction.sequence(actionArray))
         
-        
-        
     }
     
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        fireTorpedo()
-    }
-    
+
     
     
     #if os(watchOS)
@@ -287,7 +289,7 @@ extension GameScene: WKCrownDelegate {
         
         print(rotationalDelta)
         
-        player.position = CGPoint(x: player.position.x + CGFloat(rotationalDelta * 1000), y: 0.0 )
+        player.position = CGPoint(x: player.position.x + CGFloat(rotationalDelta * 1000), y: player.position.y )
         
     }
     

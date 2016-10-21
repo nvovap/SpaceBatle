@@ -22,9 +22,14 @@
 		032BFE931DB8C646000B8A1D /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032BFE631DB8C600000B8A1D /* GameScene.swift */; };
 		032BFE941DB8C646000B8A1D /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032BFE631DB8C600000B8A1D /* GameScene.swift */; };
 		032BFE951DB8C646000B8A1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 032BFE641DB8C632000B8A1D /* Assets.xcassets */; };
-		032BFE961DB8C646000B8A1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 032BFE641DB8C632000B8A1D /* Assets.xcassets */; };
 		032BFEAD1DB8F3CE000B8A1D /* explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 032BFEAB1DB8F3CE000B8A1D /* explosion.mp3 */; };
 		032BFEAE1DB8F3CE000B8A1D /* torpedo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 032BFEAC1DB8F3CE000B8A1D /* torpedo.mp3 */; };
+		034E73E31DBA4E3700490F68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 032BFE641DB8C632000B8A1D /* Assets.xcassets */; };
+		034E73EA1DBA4FCA00490F68 /* Starfield.sks in Resources */ = {isa = PBXBuildFile; fileRef = 03F654B61DB904790051BB45 /* Starfield.sks */; };
+		034E73EB1DBA4FCF00490F68 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 03F654B81DB904870051BB45 /* Explosion.sks */; };
+		034E73EC1DBA4FD600490F68 /* torpedo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 032BFEAC1DB8F3CE000B8A1D /* torpedo.mp3 */; };
+		034E73ED1DBA4FD900490F68 /* explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 032BFEAB1DB8F3CE000B8A1D /* explosion.mp3 */; };
+		034E73EE1DBA4FF600490F68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 032BFE641DB8C632000B8A1D /* Assets.xcassets */; };
 		03F654B71DB904790051BB45 /* Starfield.sks in Resources */ = {isa = PBXBuildFile; fileRef = 03F654B61DB904790051BB45 /* Starfield.sks */; };
 		03F654B91DB904870051BB45 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 03F654B81DB904870051BB45 /* Explosion.sks */; };
 /* End PBXBuildFile section */
@@ -92,6 +97,7 @@
 		032BFEA51DB8E83F000B8A1D /* WatchKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WatchKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.1.sdk/System/Library/Frameworks/WatchKit.framework; sourceTree = DEVELOPER_DIR; };
 		032BFEAB1DB8F3CE000B8A1D /* explosion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = explosion.mp3; sourceTree = "<group>"; };
 		032BFEAC1DB8F3CE000B8A1D /* torpedo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = torpedo.mp3; sourceTree = "<group>"; };
+		034E73E11DBA455D00490F68 /* GameplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameplayKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.1.sdk/System/Library/Frameworks/GameplayKit.framework; sourceTree = DEVELOPER_DIR; };
 		03F654B61DB904790051BB45 /* Starfield.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Starfield.sks; sourceTree = "<group>"; };
 		03F654B81DB904870051BB45 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -185,6 +191,7 @@
 		032BFEA41DB8E83F000B8A1D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				034E73E11DBA455D00490F68 /* GameplayKit.framework */,
 				032BFEA51DB8E83F000B8A1D /* WatchKit.framework */,
 			);
 			name = Frameworks;
@@ -314,7 +321,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				032BFE961DB8C646000B8A1D /* Assets.xcassets in Resources */,
+				034E73EE1DBA4FF600490F68 /* Assets.xcassets in Resources */,
 				032BFE801DB8C644000B8A1D /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,6 +330,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				034E73ED1DBA4FD900490F68 /* explosion.mp3 in Resources */,
+				034E73EC1DBA4FD600490F68 /* torpedo.mp3 in Resources */,
+				034E73EA1DBA4FCA00490F68 /* Starfield.sks in Resources */,
+				034E73EB1DBA4FCF00490F68 /* Explosion.sks in Resources */,
+				034E73E31DBA4E3700490F68 /* Assets.xcassets in Resources */,
 				032BFE921DB8C646000B8A1D /* GameScene.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
