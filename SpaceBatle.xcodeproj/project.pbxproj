@@ -30,6 +30,8 @@
 		034E73EC1DBA4FD600490F68 /* torpedo.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 032BFEAC1DB8F3CE000B8A1D /* torpedo.mp3 */; };
 		034E73ED1DBA4FD900490F68 /* explosion.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 032BFEAB1DB8F3CE000B8A1D /* explosion.mp3 */; };
 		034E73EE1DBA4FF600490F68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 032BFE641DB8C632000B8A1D /* Assets.xcassets */; };
+		034E73F21DBA578500490F68 /* GameSceneWatch.sks in Resources */ = {isa = PBXBuildFile; fileRef = 034E73F11DBA578500490F68 /* GameSceneWatch.sks */; };
+		034E73F31DBA599700490F68 /* GameSceneWatch.sks in Resources */ = {isa = PBXBuildFile; fileRef = 034E73F11DBA578500490F68 /* GameSceneWatch.sks */; };
 		03F654B71DB904790051BB45 /* Starfield.sks in Resources */ = {isa = PBXBuildFile; fileRef = 03F654B61DB904790051BB45 /* Starfield.sks */; };
 		03F654B91DB904870051BB45 /* Explosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 03F654B81DB904870051BB45 /* Explosion.sks */; };
 /* End PBXBuildFile section */
@@ -98,6 +100,7 @@
 		032BFEAB1DB8F3CE000B8A1D /* explosion.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = explosion.mp3; sourceTree = "<group>"; };
 		032BFEAC1DB8F3CE000B8A1D /* torpedo.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = torpedo.mp3; sourceTree = "<group>"; };
 		034E73E11DBA455D00490F68 /* GameplayKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameplayKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.1.sdk/System/Library/Frameworks/GameplayKit.framework; sourceTree = DEVELOPER_DIR; };
+		034E73F11DBA578500490F68 /* GameSceneWatch.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameSceneWatch.sks; sourceTree = "<group>"; };
 		03F654B61DB904790051BB45 /* Starfield.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Starfield.sks; sourceTree = "<group>"; };
 		03F654B81DB904870051BB45 /* Explosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Explosion.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -141,6 +144,7 @@
 				032BFEAC1DB8F3CE000B8A1D /* torpedo.mp3 */,
 				032BFE611DB8C5FA000B8A1D /* Actions.sks */,
 				032BFE621DB8C5FD000B8A1D /* GameScene.sks */,
+				034E73F11DBA578500490F68 /* GameSceneWatch.sks */,
 				032BFE631DB8C600000B8A1D /* GameScene.swift */,
 				032BFE641DB8C632000B8A1D /* Assets.xcassets */,
 			);
@@ -311,6 +315,7 @@
 				032BFE911DB8C646000B8A1D /* GameScene.sks in Resources */,
 				032BFE721DB8C63F000B8A1D /* Main.storyboard in Resources */,
 				032BFE901DB8C646000B8A1D /* Actions.sks in Resources */,
+				034E73F31DBA599700490F68 /* GameSceneWatch.sks in Resources */,
 				032BFE751DB8C642000B8A1D /* LaunchScreen.storyboard in Resources */,
 				032BFE951DB8C646000B8A1D /* Assets.xcassets in Resources */,
 				03F654B91DB904870051BB45 /* Explosion.sks in Resources */,
@@ -334,6 +339,7 @@
 				034E73EC1DBA4FD600490F68 /* torpedo.mp3 in Resources */,
 				034E73EA1DBA4FCA00490F68 /* Starfield.sks in Resources */,
 				034E73EB1DBA4FCF00490F68 /* Explosion.sks in Resources */,
+				034E73F21DBA578500490F68 /* GameSceneWatch.sks in Resources */,
 				034E73E31DBA4E3700490F68 /* Assets.xcassets in Resources */,
 				032BFE921DB8C646000B8A1D /* GameScene.sks in Resources */,
 			);

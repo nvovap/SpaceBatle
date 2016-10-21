@@ -70,10 +70,21 @@ class GameScene: SKScene{
     
     class func newGameScene() -> GameScene {
         // Load 'GameScene.sks' as an SKScene.
-        guard let scene = SKScene(fileNamed: "GameScene") as? GameScene else {
-            print("Failed to load GameScene.sks")
-            abort()
-        }
+        
+        #if os(watchOS)
+            guard let scene = SKScene(fileNamed: "GameSceneWatch") as? GameScene else {
+                print("Failed to load GameScene.sks")
+                abort()
+            }
+        #else
+            guard let scene = SKScene(fileNamed: "GameScene") as? GameScene else {
+                print("Failed to load GameScene.sks")
+                abort()
+            }
+        #endif
+        
+        
+        
         
         // Set the scale mode to scale to fit the window
         scene.scaleMode = .aspectFill
@@ -112,19 +123,10 @@ class GameScene: SKScene{
         
         
         
-        gameTimer = Timer.scheduledTimer(timeInterval: 0.75, target: self, selector: #selector(addAlien), userInfo: nil, repeats: true)
+        gameTimer = Timer.scheduledTimer(timeInterval: 5.75, target: self, selector: #selector(addAlien), userInfo: nil, repeats: true)
         
+       
         
-        motionManager.accelerometerUpdateInterval = 0.2
-        
-        motionManager.startAccelerometerUpdates(to: OperationQueue.current!, withHandler: {(data: CMAccelerometerData?, error:Error?) in
-            if let accelerometerData = data {
-                self.xAcceleration = CGFloat(accelerometerData.acceleration.x) * 0.75 + self.xAcceleration * 0.25
-            }
-            
-        })
-        
-
         
         
         
@@ -134,6 +136,15 @@ class GameScene: SKScene{
             crownSequencer.delegate = self
             crownSequencer.focus()
             
+        #else
+            motionManager.accelerometerUpdateInterval = 0.2
+            
+            motionManager.startAccelerometerUpdates(to: OperationQueue.current!, withHandler: {(data: CMAccelerometerData?, error:Error?) in
+                if let accelerometerData = data {
+                    self.xAcceleration = CGFloat(accelerometerData.acceleration.x) * 0.75 + self.xAcceleration * 0.25
+                }
+                
+            })
         #endif
 
     }
@@ -188,6 +199,13 @@ class GameScene: SKScene{
     }
     
     
+    #if os(watchOS)
+    
+    #else
+        override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+            fireTorpedo()
+        }
+    #endif
     
     func fireTorpedo() {
         
